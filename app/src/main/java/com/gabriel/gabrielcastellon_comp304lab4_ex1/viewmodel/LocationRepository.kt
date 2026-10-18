@@ -4,12 +4,13 @@ import android.util.Log
 import com.gabriel.gabrielcastellon_comp304lab4_ex1.model.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import com.gabriel.gabrielcastellon_comp304lab4_ex1.BuildConfig
 
 class LocationRepository(
     private val locationDao: LocationDao, // Injected DAO for database operations
 ) {
     private val api = RetrofitObject.googleMapsApi // Retrofit API instance
-    private val apiKey = "AIzaSyAgo6tw6e2kaizk-M-F_vEdOdJM-R9uxDQ"
+    private val apiKey = BuildConfig.MAPS_API_KEY
 
     // Fetch geocode (address) from latitude and longitude
     suspend fun fetchGeocode(latlng: String): GeocodeResponse? {
